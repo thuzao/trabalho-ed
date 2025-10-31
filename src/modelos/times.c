@@ -6,8 +6,12 @@
 
 
 Times *criarTime(int id, const char *nome){
-    Times *time;
-    
+    Times *time = malloc(sizeof(Times));
+    if (time == NULL) {
+        perror("Erro ao alocar memória para Time! \n");
+        exit(1);
+    }
+
     //Declarando ID do time
     time->ID = id;
     

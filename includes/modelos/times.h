@@ -16,7 +16,7 @@ typedef struct
 
 
 //Função para criar time
-Times criarTime(int id, const char *nome);
+Times *criarTime(int id, const char *nome);
 
 //Função que retorna a pontuação do time
 int pontuacaoTime(Times *time, int id);
