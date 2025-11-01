@@ -1,6 +1,8 @@
 {
     "files.associations": {
         "stdlib.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "bd_times.h": "c",
+        "leitura.h": "c"
     }
 }

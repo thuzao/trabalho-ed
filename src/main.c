@@ -2,14 +2,21 @@
 #include "leitura.h"
 
 int main(){
-    BD_Times *dados = alocarMemoriaBDTimes();
-    carregarTimes("times.csv", dados);
+    BD_Times *dados_times = alocarMemoriaBDTimes();
+    BD_Partidas *dados_partidas = alocarMemoriaBDPartidas();
+    carregarTimes("times.csv", dados_times);
+    carregarPartidas("partidas_completo.csv", dados_partidas);
     
-    for (int i = 0; i < dados->qntd; i++){
-        imprimirTime(dados->times[i]);
-    }
+    for (int i = 0; i < dados_times->qntd; i++){
+        imprimirTime(dados_times->times[i]);
+    };
 
-    liberarBDTimes(dados);
+    for (int j = 0; j < dados_partidas->qntd; j++){
+        imprimirPartida(dados_partidas->partidas[j]);
+    };
+
+    liberarBDTimes(dados_times);
+    liberarBDPartidas(dados_partidas);
     
     return 0;
 }

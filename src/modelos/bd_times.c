@@ -14,7 +14,7 @@ void adicionarTime(BD_Times *bd, int id, const char *nome_do_time){
         bd->times[bd->qntd++] = time;
     };
 }
-#include <stdlib.h>
+
 
 BD_Times *alocarMemoriaBDTimes() {
     BD_Times *bd = malloc(sizeof(BD_Times));
@@ -29,6 +29,5 @@ void liberarBDTimes(BD_Times *bd) {
     for (int i = 0; i < bd->qntd; i++) {
         free(bd->times[i]);
     }
-    free(bd->times);
     free(bd);
 }
