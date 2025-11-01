@@ -28,3 +28,5 @@ Times *criarTime(int id, const char *nome){
 
     return time;
 }
+
+

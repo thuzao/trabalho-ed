@@ -18,6 +18,9 @@ typedef struct
 //Função para criar time
 Times *criarTime(int id, const char *nome);
 
+//Função para imprimir o time e as suas informações
+void imprimirTime(Times time);
+
 //Função que retorna a pontuação do time
 int pontuacaoTime(Times *time, int id);
 

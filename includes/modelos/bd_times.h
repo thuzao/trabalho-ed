@@ -11,12 +11,15 @@ typedef struct
 
 } BD_Times;
 
+
 //Função que adiciona um time ao vetor
 void adicionarTime(BD_Times *bd, int id, const char *nome_do_time);
 
 //Função que verificar se já existe time
 int existeTime(BD_Times *bd, char *nome_do_time);
 
+//Função para alocar a memória dos times
+BD_Times *alocarMemoriaBDTimes();
 
 //Função para liberar memória dos times, uma vez que foram alocados dinamicamente
 void liberarBDTimes(BD_Times *bd);

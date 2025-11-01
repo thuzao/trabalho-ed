@@ -14,10 +14,21 @@ void adicionarTime(BD_Times *bd, int id, const char *nome_do_time){
         bd->times[bd->qntd++] = time;
     };
 }
+#include <stdlib.h>
+
+BD_Times *alocarMemoriaBDTimes() {
+    BD_Times *bd = malloc(sizeof(BD_Times));
+    if (bd == NULL) {
+        printf("Erro ao alocar memória para estrutura de Times\n");
+        exit(1);
+    }
+    return bd;
+}
 
 void liberarBDTimes(BD_Times *bd) {
     for (int i = 0; i < bd->qntd; i++) {
         free(bd->times[i]);
     }
-    bd->qntd = 0;
+    free(bd->times);
+    free(bd);
 }
