@@ -29,4 +29,6 @@ Times *criarTime(int id, const char *nome){
     return time;
 }
 
-
+void imprimirTime(Times *time){
+    printf("%d, %s , %d, %d, %d, %d, %d", time->ID, time->nomeDoTime, time->vitorias, time->empates, time->derrotas, time->gols_marcados, time->gols_sofridos);
+}
