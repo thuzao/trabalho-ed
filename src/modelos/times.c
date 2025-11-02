@@ -34,7 +34,7 @@ Times *criarTime(int id, const char *nome){
 
 void imprimirTime(Times *time){
     //Realiza a impressão do time
-    printf("%d, %s , %d, %d, %d, %d, %d \n", time->ID, time->nome_do_time, time->vitorias, time->empates, time->derrotas, time->gols_marcados, time->gols_sofridos);
+    printf("%d, %s, %d, %d, %d, %d, %d \n", time->ID, time->nome_do_time, time->vitorias, time->empates, time->derrotas, time->gols_marcados, time->gols_sofridos);
 }
 
 int verificarPreFixo(const char *nome_do_time, const char *prefixo){
@@ -51,4 +51,14 @@ int verificarPreFixo(const char *nome_do_time, const char *prefixo){
     //Retorna ao sair do looping, aprovando o prefixo igual ao inicio do nome do time
     return 1;
 
+}
+
+//Função que adicionar os gols marcados as estatísticas do time
+void adicionarGolsMarcados(Times *time, int gols){
+    time->gols_marcados = gols;
+}
+
+//Função que adicionar os gols sofridos as estatísticas do time
+void adicionarGolsSofridos(Times *time, int gols){
+    time->gols_sofridos = gols;
 }

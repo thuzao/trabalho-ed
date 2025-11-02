@@ -20,6 +20,14 @@ Partidas *criarPartida(int ID, int t1, int t2, int gst1, int gst2){
     return partida;
 }
 
+int verificarSeFoiEmpate(Partidas *partida){
+    if ((partida->gols_time1 - partida->gols_time2) == 0){
+        return 1;
+    } else {
+        return 0;
+    }
+}
+
 void imprimirPartida(Partidas *partida){
     printf("%d, %d, %d, %d, %d \n", partida->id, partida->time1, partida->time2, partida->gols_time1, partida->gols_time2);
 }

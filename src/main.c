@@ -7,6 +7,8 @@ int main(){
     carregarTimes("times.csv", dados_times);
     carregarPartidas("partidas_completo.csv", dados_partidas);
     
+    atualizarDadosTimes(dados_partidas, dados_times);
+
     for (int i = 0; i < dados_times->qntd; i++){
         imprimirTime(dados_times->times[i]);
     };

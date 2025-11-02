@@ -13,6 +13,9 @@ typedef struct
 //Função para criar a partida com suas informações
 Partidas *criarPartida(int ID, int t1, int t2, int gst1, int gst2);
 
+//Função para verificar qual time venceu, empatou ou perdeu
+int verificarSeFoiEmpate(Partidas *partida);
+
 //Função para imprimir a partida com os dados necessários
 void imprimirPartida(Partidas *partida);
 

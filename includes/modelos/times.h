@@ -30,4 +30,10 @@ int saldoDeGols(Times *time, int id);
 //Função que, dado um prefixo, verifica se o time possui o mesmo.
 int verificarPreFixo(const char *nome_do_time, const char *prefixo);
 
+//Função para adicionar os gols marcados
+void adicionarGolsMarcados(Times *time, int gols);
+
+//Função para adicionar os gols sofridos
+void adicionarGolsSofridos(Times *time, int gols);
+
 #endif

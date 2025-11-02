@@ -2,6 +2,8 @@
 #define BD_TIMES_H
 
 #include "times.h"
+#include "partidas.h"
+#include "bd_partidas.h"
 
 #define TIMES_MAXIMO 100
 typedef struct 
@@ -24,7 +26,11 @@ BD_Times *alocarMemoriaBDTimes();
 //Função para liberar memória dos times, uma vez que foram alocados dinamicamente
 void liberarBDTimes(BD_Times *bd);
 
-void atualizarDadosTImes(BD_Partidas *dados_das_partidas, BD_Times *dados_dos_times);
+//Função para atualizar informações/estatísticas dos times
+void atualizarDadosTimes(BD_Partidas *dados_das_partidas, BD_Times *dados_dos_times);
+
+//Função para atualizar informações do vencedor e do perdedor
+void atualizarVencedor(Partidas *partida, Times *time1, Times *time2);
 
 //Função para consultar um time baseado no prefixo/nome
 void consultarTimes(BD_Times *dados);
