@@ -6,7 +6,10 @@
 
 
 Times *criarTime(int id, const char *nome){
+    //Realiza a alocação de memória para o time criado
     Times *time = malloc(sizeof(Times));
+    
+    //Verifica se a alocação de memória foi correta
     if (time == NULL) {
         perror("Erro ao alocar memória para Time! \n");
         exit(1);
@@ -16,8 +19,8 @@ Times *criarTime(int id, const char *nome){
     time->ID = id;
     
     //Declarando nome do time - Copiando nome do time para o char da estrutura
-    strncpy(time->nomeDoTime, nome, TAMANHO_NOME_TIME - 1);
-    time->nomeDoTime[TAMANHO_NOME_TIME - 1] = '\0'; //Garantir o \n no final do char
+    strncpy(time->nome_do_time, nome, TAMANHO_NOME_TIME - 1);
+    time->nome_do_time[TAMANHO_NOME_TIME - 1] = '\0'; //Garantir o \n no final do char
     
     //Declaração de estatísticas do time
     time->vitorias = 0;
@@ -30,5 +33,22 @@ Times *criarTime(int id, const char *nome){
 }
 
 void imprimirTime(Times *time){
-    printf("%d, %s , %d, %d, %d, %d, %d \n", time->ID, time->nomeDoTime, time->vitorias, time->empates, time->derrotas, time->gols_marcados, time->gols_sofridos);
+    //Realiza a impressão do time
+    printf("%d, %s , %d, %d, %d, %d, %d \n", time->ID, time->nome_do_time, time->vitorias, time->empates, time->derrotas, time->gols_marcados, time->gols_sofridos);
+}
+
+int verificarPreFixo(const char *nome_do_time, const char *prefixo){
+
+    if (nome_do_time == NULL || prefixo == NULL) return 0;
+
+    //Looping para verificar o prefixo, enquanto o prefixo não for nulo (\0)
+    while (*prefixo) {
+        //o loopping irá verificar se elemento verificado no nome_do_time é igual ao elemento do prefixo
+        if (*prefixo++ != *nome_do_time++)
+            //Retorna zero se o elemento for diferente, encerrando a execução da função
+            return 0;
+    }
+    //Retorna ao sair do looping, aprovando o prefixo igual ao inicio do nome do time
+    return 1;
+
 }

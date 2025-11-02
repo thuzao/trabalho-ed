@@ -15,7 +15,6 @@ void adicionarTime(BD_Times *bd, int id, const char *nome_do_time){
     };
 }
 
-
 BD_Times *alocarMemoriaBDTimes() {
     BD_Times *bd = malloc(sizeof(BD_Times));
     if (bd == NULL) {
@@ -30,4 +29,24 @@ void liberarBDTimes(BD_Times *bd) {
         free(bd->times[i]);
     }
     free(bd);
+}
+void atualizarDadosTImes(BD_Partidas *dados_das_partidas, BD_Times *dados_dos_times){
+
+}
+
+
+void consultarTimes(BD_Times *dados){
+    char prefixo[TIMES_MAXIMO];
+    int times_impressos = 0;
+    printf("Digite o nome ou prefixo do time: \n");
+    scanf("%s", prefixo); 
+    for (int i = 0; i < dados->qntd; i++){
+        if (verificarPreFixo(dados->times[i]->nome_do_time, prefixo)){
+            imprimirTime(dados->times[i]);
+            times_impressos++;
+        };
+    };
+    if (times_impressos == 0){
+        printf("Nao foi encontrado nenhum time com este prefixo ou nome \n");
+    };
 }

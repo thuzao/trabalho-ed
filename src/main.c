@@ -15,6 +15,8 @@ int main(){
         imprimirPartida(dados_partidas->partidas[j]);
     };
 
+    consultarTimes(dados_times);
+
     liberarBDTimes(dados_times);
     liberarBDPartidas(dados_partidas);
     

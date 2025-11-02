@@ -24,6 +24,11 @@ BD_Times *alocarMemoriaBDTimes();
 //Função para liberar memória dos times, uma vez que foram alocados dinamicamente
 void liberarBDTimes(BD_Times *bd);
 
+void atualizarDadosTImes(BD_Partidas *dados_das_partidas, BD_Times *dados_dos_times);
+
+//Função para consultar um time baseado no prefixo/nome
+void consultarTimes(BD_Times *dados);
+
 
 
 #endif

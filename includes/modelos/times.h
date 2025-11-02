@@ -6,7 +6,7 @@
 typedef struct 
 {
     int ID;
-    char nomeDoTime[TAMANHO_NOME_TIME];
+    char nome_do_time[TAMANHO_NOME_TIME];
     int vitorias;
     int empates;
     int derrotas;
@@ -27,5 +27,7 @@ int pontuacaoTime(Times *time, int id);
 //Função que retorna o saldo de gols
 int saldoDeGols(Times *time, int id);
 
+//Função que, dado um prefixo, verifica se o time possui o mesmo.
+int verificarPreFixo(const char *nome_do_time, const char *prefixo);
 
 #endif
