@@ -90,6 +90,12 @@ void atualizarDadosTimes(BD_Partidas *dados_das_partidas, BD_Times *dados_dos_ti
     }
 }
 
+void imprimirClassificacao(BD_Times *dados_times){
+    printf("%-5s %-10s %-5s %-5s %-5s %-5s %-5s %-5s %-5s \n", "ID", "Time", "V", "E", "D", "GM", "GS", "SG", "PG");
+    for (int i = 0; i < dados_times->qntd; i++){
+        imprimirTime(dados_times->times[i]);
+    }
+}
 
 void consultarTimes(BD_Times *dados){
     char prefixo[TIMES_MAXIMO];

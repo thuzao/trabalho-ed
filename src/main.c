@@ -20,7 +20,9 @@ int main(){
 
     // consultarTimes(dados_times);
 
-    consultarPartidas(dados_partidas, dados_times);
+    // consultarPartidas(dados_partidas, dados_times);
+    imprimirClassificacao(dados_times);
+
     liberarBDTimes(dados_times);
     liberarBDPartidas(dados_partidas);
     
