@@ -4,8 +4,8 @@
 
 #include "time.h"
 #include "partidas.h"
-#include "bd_times.h"
 #include "bd_partidas.h"
+#include "bd_times.h"
 
 void carregarTimes(const char *bd_times, BD_Times *dados){
     //Lê o arquivo bd_times e armazena na variável
@@ -97,7 +97,7 @@ void consultarTimes(BD_Times *dados){
     printf("Digite o nome ou prefixo do time: \n");
     scanf("%s", prefixo); 
     for (int i = 0; i < dados->qntd; i++){
-        if (verificarPreFixo(dados->times[i]->nome_do_time, prefixo)){
+        if (verificarPreFixoDoTime(dados->times[i]->nome_do_time, prefixo)){
             imprimirTime(dados->times[i]);
             times_impressos++;
         };

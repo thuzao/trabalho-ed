@@ -2,7 +2,10 @@
 #define BD_TIMES_H
 
 #include "times.h"
-#include "bd_partidas.h"
+
+
+typedef struct BD_Partidas BD_Partidas;
+
 
 #define TIMES_MAXIMO 100
 typedef struct 

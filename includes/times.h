@@ -30,7 +30,7 @@ int pontuacaoTime(Times *time, int id);
 int saldoDeGols(Times *time, int id);
 
 //Função que, dado um prefixo, verifica se o time possui o mesmo.
-int verificarPreFixo(const char *nome_do_time, const char *prefixo);
+int verificarPreFixoDoTime(const char *nome_do_time, const char *prefixo);
 
 //Função que calcular a pontuação dos time
 void calcularPontuacao(Times *time);

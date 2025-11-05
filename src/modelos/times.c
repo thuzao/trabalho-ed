@@ -36,7 +36,7 @@ void imprimirTime(Times *time){
     printf("%d, %s, %d, %d, %d, %d, %d, %d, %d \n", time->ID, time->nome_do_time, time->vitorias, time->empates, time->derrotas, time->gols_marcados, time->gols_sofridos, time->pontuacao, time->saldo_de_gols);
 }
 
-int verificarPreFixo(const char *nome_do_time, const char *prefixo){
+int verificarPreFixoDoTime(const char *nome_do_time, const char *prefixo){
 
     if (nome_do_time == NULL || prefixo == NULL) return 0;
 

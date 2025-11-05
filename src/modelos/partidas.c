@@ -4,6 +4,8 @@
 
 #include "partidas.h"
 #include "times.h"
+#include "bd_partidas.h"
+#include "bd_times.h"
 
 
 Partidas *criarPartida(int ID, int t1, int t2, int gst1, int gst2){
@@ -38,6 +40,16 @@ void atualizarVencedor(Partidas *partida, Times *time1, Times *time2){
     } else {
         time2->vitorias++;
         time1->derrotas++;
+    }
+}
+
+int verificarMandante(const char *prefix, Partidas *partida, BD_Times *dados_times){
+    int id_mandante = partida->time1;
+    Times *time_mandante = dados_times->times[id_mandante];
+    if (verificarPreFixoDoTime(time_mandante->nome_do_time, prefix)){
+        return 1;
+    } else {
+        return 0;
     }
 }
 

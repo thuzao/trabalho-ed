@@ -2,9 +2,6 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "time.h"
-#include "partidas.h"
-#include "bd_times.h"
 #include "bd_partidas.h"
 
 void carregarPartidas(const char *bd_partidas, BD_Partidas *dados){
@@ -50,6 +47,45 @@ void adicionarPartida(BD_Partidas *bd, int id, int time1, int time2, int gols_ti
     } else {
         bd->partidas[bd->qntd++] = partida;
     };
+}
+
+void imprimirTextoParaConsultarPartidas(){
+    printf("Escolha o modo de consulta:");
+    printf("1 - Por time mandante");
+    printf("2 - Por time visitante");
+    printf("3 - Por time mandante ou visitante");
+    printf("4 - Retornar ao menu principal");
+}
+
+void consultarPartidas(BD_Partidas *dados){
+    int escolha;
+
+    imprimirTextoParaConsultarPartidas();
+    scanf("%d", &escolha);
+
+    switch (escolha) {
+        case 1:
+            //Verificar mandante;
+            break;
+
+        case 2:
+            //Verificar visitante;
+            break;
+
+        case 3:
+            //Verificar mandante e visitante;
+            break;
+
+        case 4:
+            //Sair do menu
+            printf("Saindo do menu...\n");
+            break;
+
+        default:
+            //Sair do menu
+            printf("Opção inválida! Tente novamente.\n");
+            break;
+    }
 }
 
 BD_Partidas *alocarMemoriaBDPartidas(){

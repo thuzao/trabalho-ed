@@ -3,6 +3,9 @@
 
 #include "partidas.h"
 
+struct BD_Times;
+
+
 #define PARTIDAS_MAXIMO 100
 typedef struct BD_Partidas
 {
@@ -16,6 +19,12 @@ void carregarPartidas(const char *bd_partidas, BD_Partidas *dados);
 
 //Função que adiciona uma partida ao vetor
 void adicionarPartida(BD_Partidas *bd, int id, int time1, int time2, int gols_time1, int gols_time2);
+
+//Função para criar para imprimir o texto para consultar
+void imprimirTextoParaConsultarPartidas();
+
+//Função para consultar partidas
+void consultarPartidas(BD_Partidas *dados);
 
 //Função para alocar a memória dos times
 BD_Partidas *alocarMemoriaBDPartidas();
