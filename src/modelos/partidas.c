@@ -51,7 +51,15 @@ int verificarMandante(const char *prefix, Partidas *partida, BD_Times *dados_tim
         return 0;
     }
 }
-
+int verificarVisitante(const char *prefix, Partidas *partida, BD_Times *dados_times){
+    int id_visitante = partida->time2;
+    Times *time_visitante = dados_times->times[id_visitante];
+    if (verificarPreFixoDoTime(time_visitante->nome_do_time, prefix)){
+        return 1;
+    } else {
+        return 0;
+    }
+}
 
 void imprimirPartida(Partidas *partida, BD_Times *dados_dos_times){
     printf("%d  %s %d x %d  %s \n", partida->id, dados_dos_times->times[partida->time1]->nome_do_time, partida->gols_time1,  partida->gols_time2, dados_dos_times->times[partida->time2]->nome_do_time);

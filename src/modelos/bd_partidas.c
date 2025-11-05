@@ -66,6 +66,7 @@ void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
 
     switch (escolha) {
         case 1:
+            //Verificar mandante
             printf("Digite o nome ou prefixo do time: \n");
             scanf("%s", prefixo);
             for (int i = 0; i < dados_partidas->qntd; i++){
@@ -77,11 +78,27 @@ void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
             break;
 
         case 2:
-            //Verificar visitante;
+            //Verificar visitante
+            printf("Digite o nome ou prefixo do time: \n");
+            scanf("%s", prefixo);
+            for (int i = 0; i < dados_partidas->qntd; i++){
+                Partidas *partidas = dados_partidas->partidas[i];
+                if (verificarVisitante(prefixo, partidas, dados_times)){
+                    imprimirPartida(partidas, dados_times);
+                }
+            }
             break;
 
         case 3:
             //Verificar mandante e visitante;
+            printf("Digite o nome ou prefixo do time: \n");
+            scanf("%s", prefixo);
+            for (int i = 0; i < dados_partidas->qntd; i++){
+                Partidas *partidas = dados_partidas->partidas[i];
+                if (verificarMandante(prefixo, partidas, dados_times) || verificarVisitante(prefixo, partidas, dados_times)){
+                    imprimirPartida(partidas, dados_times);
+                }
+            }
             break;
 
         case 4:
