@@ -7,7 +7,6 @@
 #include "bd_partidas.h"
 #include "bd_times.h"
 
-
 Partidas *criarPartida(int ID, int t1, int t2, int gst1, int gst2){
     Partidas *partida = malloc(sizeof(Partidas));
     if (partida == NULL) {
@@ -54,6 +53,6 @@ int verificarMandante(const char *prefix, Partidas *partida, BD_Times *dados_tim
 }
 
 
-void imprimirPartida(Partidas *partida){
-    printf("%d, %d, %d, %d, %d \n", partida->id, partida->time1, partida->time2, partida->gols_time1, partida->gols_time2);
+void imprimirPartida(Partidas *partida, BD_Times *dados_dos_times){
+    printf("%d  %s %d x %d  %s \n", partida->id, dados_dos_times->times[partida->time1]->nome_do_time, partida->gols_time1,  partida->gols_time2, dados_dos_times->times[partida->time2]->nome_do_time);
 }

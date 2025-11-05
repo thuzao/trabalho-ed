@@ -50,22 +50,30 @@ void adicionarPartida(BD_Partidas *bd, int id, int time1, int time2, int gols_ti
 }
 
 void imprimirTextoParaConsultarPartidas(){
-    printf("Escolha o modo de consulta:");
-    printf("1 - Por time mandante");
-    printf("2 - Por time visitante");
-    printf("3 - Por time mandante ou visitante");
-    printf("4 - Retornar ao menu principal");
+    printf("Escolha o modo de consulta: \n");
+    printf("1 - Por time mandante \n");
+    printf("2 - Por time visitante \n");
+    printf("3 - Por time mandante ou visitante \n");
+    printf("4 - Retornar ao menu principal \n");
 }
 
-void consultarPartidas(BD_Partidas *dados){
+void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
     int escolha;
+    char prefixo[TIMES_MAXIMO];
 
     imprimirTextoParaConsultarPartidas();
     scanf("%d", &escolha);
 
     switch (escolha) {
         case 1:
-            //Verificar mandante;
+            printf("Digite o nome ou prefixo do time: \n");
+            scanf("%s", prefixo);
+            for (int i = 0; i < dados_partidas->qntd; i++){
+                Partidas *partidas = dados_partidas->partidas[i];
+                if (verificarMandante(prefixo, partidas, dados_times)){
+                    imprimirPartida(partidas, dados_times);
+                }
+            }
             break;
 
         case 2:

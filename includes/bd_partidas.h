@@ -24,7 +24,7 @@ void adicionarPartida(BD_Partidas *bd, int id, int time1, int time2, int gols_ti
 void imprimirTextoParaConsultarPartidas();
 
 //Função para consultar partidas
-void consultarPartidas(BD_Partidas *dados);
+void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times);
 
 //Função para alocar a memória dos times
 BD_Partidas *alocarMemoriaBDPartidas();

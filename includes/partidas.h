@@ -27,6 +27,6 @@ void atualizarVencedor(Partidas *partida, Times *time1, Times *time2);
 int verificarMandante(const char *prefix, Partidas *partida, BD_Times *dados_times);
 
 //Função para imprimir a partida com os dados necessários
-void imprimirPartida(Partidas *partida);
+void imprimirPartida(Partidas *partida, BD_Times *dados_dos_times);
 
 #endif
