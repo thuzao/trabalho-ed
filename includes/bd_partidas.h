@@ -10,6 +10,10 @@ typedef struct BD_Partidas
     Partidas *partidas[PARTIDAS_MAXIMO];
 } BD_Partidas;
 
+
+//Função para carregar as partidas para o vetor dinâmico. Recebe como parâmetro o nome do arquivo e aonde que será salvo
+void carregarPartidas(const char *bd_partidas, BD_Partidas *dados);
+
 //Função que adiciona uma partida ao vetor
 void adicionarPartida(BD_Partidas *bd, int id, int time1, int time2, int gols_time1, int gols_time2);
 

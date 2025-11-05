@@ -2,8 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "leitura.h"
-
+#include "times.h"
 
 Times *criarTime(int id, const char *nome){
     //Realiza a alocação de memória para o time criado

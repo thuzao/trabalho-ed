@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "leitura.h"
+#include "bd_times.h"
+#include "bd_partidas.h"
 
 int main(){
     BD_Times *dados_times = alocarMemoriaBDTimes();

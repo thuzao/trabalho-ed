@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-#include "leitura.h"
+#include "partidas.h"
 
 
 Partidas *criarPartida(int ID, int t1, int t2, int gst1, int gst2){
@@ -21,8 +21,10 @@ Partidas *criarPartida(int ID, int t1, int t2, int gst1, int gst2){
 }
 
 int verificarSeFoiEmpate(Partidas *partida){
-    if ((partida->gols_time1 - partida->gols_time2) == 0){
+    int count = 0;
+    if (partida->gols_time1 == partida->gols_time2){
         return 1;
+        printf("%d\n", count++);
     } else {
         return 0;
     }

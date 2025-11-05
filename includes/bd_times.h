@@ -2,7 +2,6 @@
 #define BD_TIMES_H
 
 #include "times.h"
-#include "partidas.h"
 #include "bd_partidas.h"
 
 #define TIMES_MAXIMO 100
@@ -13,6 +12,8 @@ typedef struct
 
 } BD_Times;
 
+//Função para carregar os times para o vetor dinâmico. Recebe como parâmetro o nome do arquivo e aonde que será salvo
+void carregarTimes(const char *bd_times, BD_Times *dados);
 
 //Função que adiciona um time ao vetor
 void adicionarTime(BD_Times *bd, int id, const char *nome_do_time);
