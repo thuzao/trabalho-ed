@@ -98,10 +98,15 @@ void imprimirClassificacao(BD_Times *dados_times){
 }
 
 void consultarTimes(BD_Times *dados){
+    char encerramento;
     char prefixo[TIMES_MAXIMO];
     int times_impressos = 0;
+    
+    system("clear");
+
     printf("Digite o nome ou prefixo do time: \n");
     scanf("%s", prefixo); 
+    printf("\n");
     for (int i = 0; i < dados->qntd; i++){
         if (verificarPreFixoDoTime(dados->times[i]->nome_do_time, prefixo)){
             imprimirTime(dados->times[i]);
@@ -111,4 +116,8 @@ void consultarTimes(BD_Times *dados){
     if (times_impressos == 0){
         printf("Nao foi encontrado nenhum time com este prefixo ou nome \n");
     };
+    printf("\n");
+    printf("\n");
+    printf("Digite qualquer tecla para voltar ao menu principal: ");
+    scanf("%s", &encerramento);
 }

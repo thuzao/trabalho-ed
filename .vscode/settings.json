@@ -5,6 +5,7 @@
         "bd_times.h": "c",
         "leitura.h": "c",
         "time.h": "c",
-        "partidas.h": "c"
+        "partidas.h": "c",
+        "concepts": "c"
     }
 }

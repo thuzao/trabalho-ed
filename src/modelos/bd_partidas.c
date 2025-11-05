@@ -50,6 +50,7 @@ void adicionarPartida(BD_Partidas *bd, int id, int time1, int time2, int gols_ti
 }
 
 void imprimirTextoParaConsultarPartidas(){
+    system("clear");
     printf("Escolha o modo de consulta: \n");
     printf("1 - Por time mandante \n");
     printf("2 - Por time visitante \n");
@@ -60,6 +61,7 @@ void imprimirTextoParaConsultarPartidas(){
 void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
     int escolha;
     char prefixo[TIMES_MAXIMO];
+    char encerramento;
 
     imprimirTextoParaConsultarPartidas();
     scanf("%d", &escolha);
@@ -75,6 +77,10 @@ void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
                     imprimirPartida(partidas, dados_times);
                 }
             }
+            printf("\n");
+            printf("\n");
+            printf("Digite qualquer tecla para voltar ao menu principal: ");
+            scanf("%s", &encerramento);
             break;
 
         case 2:
@@ -87,6 +93,11 @@ void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
                     imprimirPartida(partidas, dados_times);
                 }
             }
+            printf("\n");
+            printf("\n");
+            printf("Digite qualquer tecla para voltar ao menu principal: ");
+            scanf("%s", &encerramento);
+            break;
             break;
 
         case 3:
@@ -99,11 +110,17 @@ void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
                     imprimirPartida(partidas, dados_times);
                 }
             }
+            printf("\n");
+            printf("\n");
+            printf("Digite qualquer tecla para voltar ao menu principal: ");
+            scanf("%s", &encerramento);
+            break;
             break;
 
         case 4:
             //Sair do menu
-            printf("Saindo do menu...\n");
+            printf("Saindo do menu de partidas...\n");
+            system("clear");
             break;
 
         default:
@@ -127,4 +144,18 @@ void liberarBDPartidas(BD_Partidas *bd) {
         free(bd->partidas[i]);
     }
     free(bd);
+}
+
+
+void imprimirMenuPrincipal(){
+    printf("Sistema de Gerenciamento de Partidas \n");
+    printf("\n");
+    printf("1 - Consultar time \n");
+    printf("2 - Consultar partida \n");
+    printf("3 - Atualizar partida (Nao implementado ainda) \n");
+    printf("4 - Remover partida (Nao implementado ainda) \n");
+    printf("5 - Inserir partida (Nao implementado ainda) \n");
+    printf("6 - Imprimir tabela de classificacao \n");
+    printf("Q - Sair \n");
+    printf("Escolha uma opção: ");
 }

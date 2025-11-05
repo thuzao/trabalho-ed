@@ -32,4 +32,6 @@ BD_Partidas *alocarMemoriaBDPartidas();
 //Função para liberar memória dos times, uma vez que foram alocados dinamicamente
 void liberarBDPartidas(BD_Partidas *bd);
 
+//Função que apresenta o menu geral
+void imprimirMenuPrincipal();
 #endif
