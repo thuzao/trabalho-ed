@@ -1,6 +1,8 @@
 #ifndef PARTIDAS_H
 #define PARTIDAS_H
 
+#include "times.h"
+
 typedef struct 
 {
     int id;
@@ -15,6 +17,9 @@ Partidas *criarPartida(int ID, int t1, int t2, int gst1, int gst2);
 
 //Função para verificar qual time venceu, empatou ou perdeu
 int verificarSeFoiEmpate(Partidas *partida);
+
+//Função para atualizar informações do vencedor e do perdedor
+void atualizarVencedor(Partidas *partida, Times *time1, Times *time2);
 
 //Função para imprimir a partida com os dados necessários
 void imprimirPartida(Partidas *partida);

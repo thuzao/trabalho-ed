@@ -33,7 +33,7 @@ Times *criarTime(int id, const char *nome){
 
 void imprimirTime(Times *time){
     //Realiza a impressão do time
-    printf("%d, %s, %d, %d, %d, %d, %d \n", time->ID, time->nome_do_time, time->vitorias, time->empates, time->derrotas, time->gols_marcados, time->gols_sofridos);
+    printf("%d, %s, %d, %d, %d, %d, %d, %d, %d \n", time->ID, time->nome_do_time, time->vitorias, time->empates, time->derrotas, time->gols_marcados, time->gols_sofridos, time->pontuacao, time->saldo_de_gols);
 }
 
 int verificarPreFixo(const char *nome_do_time, const char *prefixo){
@@ -52,12 +52,17 @@ int verificarPreFixo(const char *nome_do_time, const char *prefixo){
 
 }
 
+void calcularPontuacao(Times *time){
+    time->pontuacao = ((time->vitorias * 3) + (time->empates));
+    time->saldo_de_gols = (time->gols_marcados - time->gols_sofridos);
+}
+
 //Função que adicionar os gols marcados as estatísticas do time
 void adicionarGolsMarcados(Times *time, int gols){
-    time->gols_marcados = gols;
+    time->gols_marcados += gols;
 }
 
 //Função que adicionar os gols sofridos as estatísticas do time
 void adicionarGolsSofridos(Times *time, int gols){
-    time->gols_sofridos = gols;
+    time->gols_sofridos += gols;
 }

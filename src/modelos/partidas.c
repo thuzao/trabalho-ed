@@ -3,6 +3,7 @@
 #include <string.h>
 
 #include "partidas.h"
+#include "times.h"
 
 
 Partidas *criarPartida(int ID, int t1, int t2, int gst1, int gst2){
@@ -29,6 +30,17 @@ int verificarSeFoiEmpate(Partidas *partida){
         return 0;
     }
 }
+
+void atualizarVencedor(Partidas *partida, Times *time1, Times *time2){
+    if (partida->gols_time1 > partida->gols_time2){
+        time1->vitorias++;
+        time2->derrotas++;
+    } else {
+        time2->vitorias++;
+        time1->derrotas++;
+    }
+}
+
 
 void imprimirPartida(Partidas *partida){
     printf("%d, %d, %d, %d, %d \n", partida->id, partida->time1, partida->time2, partida->gols_time1, partida->gols_time2);

@@ -10,13 +10,13 @@ int main(){
     
     atualizarDadosTimes(dados_partidas, dados_times);
 
-    for (int i = 0; i < dados_times->qntd; i++){
-        imprimirTime(dados_times->times[i]);
-    };
+        // for (int i = 0; i < dados_times->qntd; i++){
+        //     imprimirTime(dados_times->times[i]);
+        // };
 
-    for (int j = 0; j < dados_partidas->qntd; j++){
-        imprimirPartida(dados_partidas->partidas[j]);
-    };
+        // for (int j = 0; j < dados_partidas->qntd; j++){
+        //     imprimirPartida(dados_partidas->partidas[j]);
+        // };
 
     consultarTimes(dados_times);
 

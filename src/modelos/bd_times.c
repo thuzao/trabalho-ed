@@ -85,18 +85,11 @@ void atualizarDadosTimes(BD_Partidas *dados_das_partidas, BD_Times *dados_dos_ti
             time1->empates++;
             time2->empates++;
         }
+        calcularPontuacao(time1);
+        calcularPontuacao(time2);
     }
 }
 
-void atualizarVencedor(Partidas *partida, Times *time1, Times *time2){
-    if (partida->gols_time1 > partida->gols_time2){
-        time1->vitorias++;
-        time2->derrotas++;
-    } else {
-        time2->vitorias++;
-        time1->derrotas++;
-    }
-}
 
 void consultarTimes(BD_Times *dados){
     char prefixo[TIMES_MAXIMO];

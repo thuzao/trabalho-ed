@@ -12,6 +12,8 @@ typedef struct
     int derrotas;
     int gols_marcados;
     int gols_sofridos;
+    int pontuacao;
+    int saldo_de_gols;
 } Times;
 
 
@@ -29,6 +31,9 @@ int saldoDeGols(Times *time, int id);
 
 //Função que, dado um prefixo, verifica se o time possui o mesmo.
 int verificarPreFixo(const char *nome_do_time, const char *prefixo);
+
+//Função que calcular a pontuação dos time
+void calcularPontuacao(Times *time);
 
 //Função para adicionar os gols marcados
 void adicionarGolsMarcados(Times *time, int gols);
