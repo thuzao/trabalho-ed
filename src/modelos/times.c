@@ -4,6 +4,7 @@
 
 #include "times.h"
 
+//Função para criar time
 Times *criarTime(int id, const char *nome){
     //Realiza a alocação de memória para o time criado
     Times *time = malloc(sizeof(Times));
@@ -19,7 +20,7 @@ Times *criarTime(int id, const char *nome){
     
     //Declarando nome do time - Copiando nome do time para o char da estrutura
     strncpy(time->nome_do_time, nome, TAMANHO_NOME_TIME - 1);
-    time->nome_do_time[TAMANHO_NOME_TIME - 1] = '\0'; //Garantir o \n no final do char
+    time->nome_do_time[TAMANHO_NOME_TIME - 1] = '\0'; //Garantir o \0 no final do char
     
     //Declaração de estatísticas do time
     time->vitorias = 0;
@@ -31,17 +32,21 @@ Times *criarTime(int id, const char *nome){
     return time;
 }
 
+//Função para imprimir o time e as suas informações
+void imprimirTime(Times *time){
+    //Realiza a impressão dos dados de um time
+    printf("%-5d %-10s %-5d %-5d %-5d %-5d %-5d %-5d %-5d \n", time->ID, time->nome_do_time, time->vitorias, time->empates, time->derrotas, time->gols_marcados, time->gols_sofridos, time->saldo_de_gols, time->pontuacao);
+}
+
+//Função para imprimir cabeçalho de para informações do time (ID, NOME, VITÓRIAS e etc)
 void imprimirCabecalhoDeDadosDosTimes(){
     printf("%-5s %-10s %-5s %-5s %-5s %-5s %-5s %-5s %-5s \n", "ID", "Time", "V", "E", "D", "GM", "GS", "SG", "PG");
 }
 
-void imprimirTime(Times *time){
-    //Realiza a impressão do time
-    printf("%-5d %-10s %-5d %-5d %-5d %-5d %-5d %-5d %-5d \n", time->ID, time->nome_do_time, time->vitorias, time->empates, time->derrotas, time->gols_marcados, time->gols_sofridos, time->saldo_de_gols, time->pontuacao);
-}
-
+//Função que, dado um prefixo, verifica se o time possui o mesmo.
 int verificarPreFixoDoTime(const char *nome_do_time, const char *prefixo){
 
+    //Verificacao para ver se prefixo ou nome do time está vazio, evitando erros.
     if (nome_do_time == NULL || prefixo == NULL) return 0;
 
     //Looping para verificar o prefixo, enquanto o prefixo não for nulo (\0)
@@ -53,20 +58,20 @@ int verificarPreFixoDoTime(const char *nome_do_time, const char *prefixo){
     }
     //Retorna ao sair do looping, aprovando o prefixo igual ao inicio do nome do time
     return 1;
-
 }
 
+//Função que calcular a pontuação dos time
 void calcularPontuacao(Times *time){
-    time->pontuacao = ((time->vitorias * 3) + (time->empates));
-    time->saldo_de_gols = (time->gols_marcados - time->gols_sofridos);
+    time->pontuacao = ((time->vitorias * 3) + (time->empates)); //Atribui a pontuaçãa ao atributo pontuação no struct times
+    time->saldo_de_gols = (time->gols_marcados - time->gols_sofridos); //Atribui o saldo de gols no struct times
 }
 
 //Função que adicionar os gols marcados as estatísticas do time
 void adicionarGolsMarcados(Times *time, int gols){
-    time->gols_marcados += gols;
+    time->gols_marcados += gols; //Atribui gols marcados ao time especifico
 }
 
 //Função que adicionar os gols sofridos as estatísticas do time
 void adicionarGolsSofridos(Times *time, int gols){
-    time->gols_sofridos += gols;
+    time->gols_sofridos += gols; //Atribui gols sofridos a estatistica do time
 }

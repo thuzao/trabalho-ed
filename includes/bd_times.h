@@ -3,11 +3,12 @@
 
 #include "times.h"
 
-
+//Forward declaration  -> Utilizei para evitar a questão de dependência infinita
 typedef struct BD_Partidas BD_Partidas;
 
-
+//Definicao da constante de tamanho maximo da quantidade de time
 #define TIMES_MAXIMO 100
+//Definição da estrutura com um vetor para alocar os times
 typedef struct 
 {
     Times *times[TIMES_MAXIMO];
@@ -20,9 +21,6 @@ void carregarTimes(const char *bd_times, BD_Times *dados);
 
 //Função que adiciona um time ao vetor
 void adicionarTime(BD_Times *bd, int id, const char *nome_do_time);
-
-//Função que verificar se já existe time
-int existeTime(BD_Times *bd, char *nome_do_time);
 
 //Função para alocar a memória dos times
 BD_Times *alocarMemoriaBDTimes();
@@ -38,7 +36,5 @@ void imprimirClassificacao(BD_Times *dados_times);
 
 //Função para consultar um time baseado no prefixo/nome
 void consultarTimes(BD_Times *dados);
-
-
 
 #endif

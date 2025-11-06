@@ -6,6 +6,7 @@
         "leitura.h": "c",
         "time.h": "c",
         "partidas.h": "c",
-        "concepts": "c"
+        "concepts": "c",
+        "stdio.h": "c"
     }
 }
