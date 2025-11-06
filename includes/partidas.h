@@ -4,6 +4,7 @@
 #include "times.h"
 #include "bd_times.h"
 
+//Definição da estrutura de partidas
 typedef struct 
 {
     int id;

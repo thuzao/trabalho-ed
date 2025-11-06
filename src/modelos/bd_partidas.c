@@ -4,6 +4,29 @@
 
 #include "bd_partidas.h"
 
+//Função para alocar a memória do BD_partidas
+BD_Partidas *alocarMemoriaBDPartidas(){
+    //Realiza a alocação dinâmica para o ponteiro bd do tipo BD_Partidas
+    BD_Partidas *bd = malloc(sizeof(BD_Partidas));
+    //Verifica se a alocação deu certo
+    if (bd == NULL) {
+        printf("Erro ao alocar memória para estrutura de Partidas\n");
+        exit(1);
+    }
+    return bd; //Retorna o ponteiro bd que aponta para a estrutura do tipo BD_Partidas
+}
+
+//Função para liberar memória dos partidas, uma vez que foram alocados dinamicamente
+void liberarBDPartidas(BD_Partidas *bd) {
+    //Looping para liberar a memória de cada partida criado, acessando o vetor de ponteiros
+    for (int i = 0; i < bd->qntd; i++) {
+        free(bd->partidas[i]);
+    }
+    //Libera a memória da struct BD_Times
+    free(bd);
+}
+
+//Função para carregar as partidas para o vetor dinâmico. Recebe como parâmetro o nome do arquivo e aonde que será salvo
 void carregarPartidas(const char *bd_partidas, BD_Partidas *dados){
     //Lê o arquivo bd_times e armazena na variável
     FILE *arquivo = fopen(bd_partidas, "r");
@@ -14,7 +37,7 @@ void carregarPartidas(const char *bd_partidas, BD_Partidas *dados){
         exit(1);
     };
 
-    //Declarando variáveis para o tamanho máximo de linhas, o id, bem como o nome do time
+    //Declarando variáveis para o tamanho máximo de linhas, o id, bem como os dados do time
     char linha[PARTIDAS_MAXIMO];
     int id;
     int time1;
@@ -30,25 +53,29 @@ void carregarPartidas(const char *bd_partidas, BD_Partidas *dados){
     while (fgets(linha, sizeof(linha), arquivo)) {
         //A condicional irá pegar o valor do id e o valor do char (Até 99 caracteres ou até achar o \n)
         if (sscanf(linha, "%d, %d, %d, %d, %d", &id, &time1, &time2, &gols_time1, &gols_time2) == 5) {
+            //Adiciona a partida específica ao vetor dinâmico dentor da estrutura BD_Partidas
             adicionarPartida(dados, id, time1, time2, gols_time1, gols_time2);
         }
     }
-
     //Fechamento da leitura do arquivo
     fclose(arquivo);
 }
 
-
+//Função que adiciona uma partida ao vetor
 void adicionarPartida(BD_Partidas *bd, int id, int time1, int time2, int gols_time1, int gols_time2){
+    //Cria uma instância da struct partida
     Partidas *partida = criarPartida(id, time1, time2, gols_time1, gols_time2);
+    //Verificação se quantidade máxima de partidas foi atingida
     if (bd->qntd >= PARTIDAS_MAXIMO){
         printf("Capacidade máxima de partidas atingida! \n");
         exit(1);
     } else {
+        //Adiciona a partida especficia ao vetor dinâmico contido na struct BD_Partidas
         bd->partidas[bd->qntd++] = partida;
     };
 }
 
+//Função para criar para imprimir o texto para consultar
 void imprimirTextoParaConsultarPartidas(){
     system("clear");
     printf("Escolha o modo de consulta: \n");
@@ -59,6 +86,7 @@ void imprimirTextoParaConsultarPartidas(){
     printf("\nDigite a opção desejada: ");
 }
 
+//Função para consultar partidas
 void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
     int escolha;
     int partidas_impressas = 0;
@@ -149,23 +177,7 @@ void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
     }
 }
 
-BD_Partidas *alocarMemoriaBDPartidas(){
-    BD_Partidas *bd = malloc(sizeof(BD_Partidas));
-    if (bd == NULL) {
-        printf("Erro ao alocar memória para estrutura de Partidas\n");
-        exit(1);
-    }
-    return bd;
-}
-
-void liberarBDPartidas(BD_Partidas *bd) {
-    for (int i = 0; i < bd->qntd; i++) {
-        free(bd->partidas[i]);
-    }
-    free(bd);
-}
-
-
+//Função que apresenta o menu geral
 void imprimirMenuPrincipal(){
     system("clear");
     printf("Sistema de Gerenciamento de Partidas \n");

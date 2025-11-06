@@ -7,6 +7,26 @@
 #include "bd_partidas.h"
 #include "bd_times.h"
 
+//Realiza a alocação de memória para a estrutura que aloca todos os times
+BD_Times *alocarMemoriaBDTimes() {
+    //Realiza a alocação dinâmica para o ponteiro bd do tipo BD_Times
+    BD_Times *bd = malloc(sizeof(BD_Times));
+    //Verifica se a alocação deu certo
+    if (bd == NULL) {
+        printf("Erro ao alocar memória para estrutura de Times\n");
+        exit(1);
+    }
+    return bd; //Retorna o ponteiro bd que aponta para a estrutura do tipo BD_Times
+}
+//Função para liberar memória dos times, uma vez que foram alocados dinamicamente
+void liberarBDTimes(BD_Times *bd) {
+    //Looping para liberar a memória de cada time criado, acessando o vetor de ponteiros
+    for (int i = 0; i < bd->qntd; i++) {
+        free(bd->times[i]);
+    }
+    //Libera a memória da struct BD_Times
+    free(bd);
+}
 //Função para carregar os times para o vetor dinâmico. Recebe como parâmetro o nome do arquivo e aonde que será salvo
 void carregarTimes(const char *bd_times, BD_Times *dados){
     //Lê o arquivo bd_times e armazena na variável
@@ -41,7 +61,7 @@ void carregarTimes(const char *bd_times, BD_Times *dados){
 
 //Função que adiciona um time ao vetor
 void adicionarTime(BD_Times *bd, int id, const char *nome_do_time){
-    //Aloca memória para o ponteiro do tipo times
+    //Cria uma instância da struct times
     Times *time = criarTime(id, nome_do_time);
     //Verifica se a capacidade máxima do time foi atingida
     if (bd->qntd >= TIMES_MAXIMO){
@@ -50,26 +70,6 @@ void adicionarTime(BD_Times *bd, int id, const char *nome_do_time){
     } else {
         bd->times[bd->qntd++] = time;
     };
-}
-//Realiza a alocação de memória para a estrutura que aloca todos os times
-BD_Times *alocarMemoriaBDTimes() {
-    //Realiza a alocação dinâmica para o ponteiro bd do tipo BD_Times
-    BD_Times *bd = malloc(sizeof(BD_Times));
-    //Verifica se a alocação deu certo
-    if (bd == NULL) {
-        printf("Erro ao alocar memória para estrutura de Times\n");
-        exit(1);
-    }
-    return bd; //Retorna o ponteiro bd que aponta para a estrutura do tipo BD_Times
-}
-//Função para liberar memória dos times, uma vez que foram alocados dinamicamente
-void liberarBDTimes(BD_Times *bd) {
-    //Looping para liberar a memória de cada time criado, acessando o vetor de ponteiros
-    for (int i = 0; i < bd->qntd; i++) {
-        free(bd->times[i]);
-    }
-    //Libera a memória da struct BD_Times
-    free(bd);
 }
 
 //Função para atualizar informações/estatísticas dos times

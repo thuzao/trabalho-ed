@@ -3,6 +3,7 @@
 
 //Definição da constante de tamanho do nome máximo do time
 #define TAMANHO_NOME_TIME 30
+
 //Definição da estrutura times
 typedef struct 
 {
