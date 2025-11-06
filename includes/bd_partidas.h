@@ -16,7 +16,6 @@ typedef struct BD_Partidas
     Partidas *partidas[PARTIDAS_MAXIMO];
 } BD_Partidas;
 
-
 //Função para alocar a memória do BD_partidas
 BD_Partidas *alocarMemoriaBDPartidas();
 

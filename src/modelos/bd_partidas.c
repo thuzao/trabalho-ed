@@ -75,23 +75,12 @@ void adicionarPartida(BD_Partidas *bd, int id, int time1, int time2, int gols_ti
     };
 }
 
-//Função para criar para imprimir o texto para consultar
-void imprimirTextoParaConsultarPartidas(){
-    system("clear");
-    printf("Escolha o modo de consulta: \n");
-    printf("1 - Por time mandante \n");
-    printf("2 - Por time visitante \n");
-    printf("3 - Por time mandante ou visitante \n");
-    printf("4 - Retornar ao menu principal \n");
-    printf("\nDigite a opção desejada: ");
-}
-
 //Função para consultar partidas
 void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
-    int escolha;
-    int partidas_impressas = 0;
-    char prefixo[TIMES_MAXIMO];
-    char encerramento;
+    int escolha; //variavel para definir a escolha do usuário
+    int partidas_impressas = 0; //declaracao para verificar se irá existir partida impresso ou nao
+    char prefixo[TAMANHO_NOME_TIME]; //declaracao da variavel para prefixo
+    char encerramento; //variavel extra para aplicar o "Digite qualquer valor para retornar ao menu"
 
     imprimirTextoParaConsultarPartidas();
     scanf("%d", &escolha);
@@ -99,20 +88,26 @@ void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
     switch (escolha) {
         case 1:
             //Verificar mandante
+            //Armazenando prefixo digitado pelo usuário
             system("clear");
             printf("Digite o nome ou prefixo do time: ");
             scanf("%s", prefixo);
             printf("\n");
+            //Loopping para percorrer o vetor contido na estrutura dados_partidas
             for (int i = 0; i < dados_partidas->qntd; i++){
+                //Armazenando o ponteiro da partida especifica
                 Partidas *partidas = dados_partidas->partidas[i];
+                //Verifica se o mandante daquela partida tem o prefixo
                 if (verificarMandante(prefixo, partidas, dados_times)){
-                    imprimirPartida(partidas, dados_times);
-                    partidas_impressas++;
+                    imprimirPartida(partidas, dados_times); //imprime a partida
+                    partidas_impressas++; //Informa que foi impresso partida
                 }
             }
+            //Caso não seja impresso nenhuma partida, será impresso essa mensagem
             if (partidas_impressas == 0){
                 printf("Nao foi encontrado nenhum time com este prefixo ou nome\n");
             }
+            //Parte de encerramento
             printf("\n");
             printf("\n");
             printf("Digite qualquer tecla para voltar ao menu principal: ");
@@ -121,20 +116,26 @@ void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
 
         case 2:
             //Verificar visitante
+            //Armazenando prefixo digitado pelo usuário
             system("clear");
             printf("Digite o nome ou prefixo do time: ");
             scanf("%s", prefixo);
             printf("\n");
+            //Loopping para percorrer o vetor contido na estrutura dados_partidas
             for (int i = 0; i < dados_partidas->qntd; i++){
+                //Armazenando o ponteiro da partida especifica
                 Partidas *partidas = dados_partidas->partidas[i];
+                //Verifica se o visitante daquela partida tem o prefixo
                 if (verificarVisitante(prefixo, partidas, dados_times)){
-                    imprimirPartida(partidas, dados_times);
-                    partidas_impressas++;
+                    imprimirPartida(partidas, dados_times); //Imprime a partida
+                    partidas_impressas++; //Informa que foi impresso partida
                 }
             }
+            //Caso não seja impresso nenhuma partida, será impresso essa mensagem
             if (partidas_impressas == 0){
                 printf("Nao foi encontrado nenhum time com este prefixo ou nome\n");
             }
+            //Parte de encerramento
             printf("\n");
             printf("\n");
             printf("Digite qualquer tecla para voltar ao menu principal: ");
@@ -143,20 +144,26 @@ void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
 
         case 3:
             //Verificar mandante e visitante;
+            //Armazenando prefixo digitado pelo usuário
             system("clear");
             printf("Digite o nome ou prefixo do time: ");
             scanf("%s", prefixo);
             printf("\n");
+            //Loopping para percorrer o vetor contido na estrutura dados_partidas
             for (int i = 0; i < dados_partidas->qntd; i++){
+                //Armazenando o ponteiro da partida especifica
                 Partidas *partidas = dados_partidas->partidas[i];
+                //Verifica se o visitante ou o mandante daquela partida tem o prefixo
                 if (verificarMandante(prefixo, partidas, dados_times) || verificarVisitante(prefixo, partidas, dados_times)){
-                    imprimirPartida(partidas, dados_times);
-                    partidas_impressas++;
+                    imprimirPartida(partidas, dados_times); //Imprime a partida
+                    partidas_impressas++; //Informa que foi impresso partida
                 }
             }
+            //Caso não seja impresso nenhuma partida, será impresso essa mensagem
             if (partidas_impressas == 0){
                 printf("Nao foi encontrado nenhum time com este prefixo ou nome\n");
             }
+            //Parte de encerramento
             printf("\n");
             printf("\n");
             printf("Digite qualquer tecla para voltar ao menu principal: ");
@@ -171,11 +178,23 @@ void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
             break;
 
         default:
-            //Sair do menu
+            //Imprimi a opcao invalida e pede para tentar novamente
             printf("Opção inválida! Tente novamente.\n");
             break;
     }
 }
+
+//Função para criar para imprimir o texto para consultar
+void imprimirTextoParaConsultarPartidas(){
+    system("clear");
+    printf("Escolha o modo de consulta: \n");
+    printf("1 - Por time mandante \n");
+    printf("2 - Por time visitante \n");
+    printf("3 - Por time mandante ou visitante \n");
+    printf("4 - Retornar ao menu principal \n");
+    printf("\nDigite a opção desejada: ");
+}
+
 
 //Função que apresenta o menu geral
 void imprimirMenuPrincipal(){
