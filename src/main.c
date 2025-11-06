@@ -29,13 +29,13 @@ int main(){
                 consultarPartidas(dados_partidas, dados_times);
                 break;
             case '3':
-                printf("Esta parte ainda nao foi implementada \n");
+                imprimirNaoFoiImplementado();
                 break;
             case '4':
-                printf("Esta parte ainda nao foi implementada \n");
+                imprimirNaoFoiImplementado();
                 break;
             case '5':
-                printf("Esta parte ainda nao foi implementada \n");
+                imprimirNaoFoiImplementado();
                 break;
             case '6':
                 imprimirClassificacao(dados_times);
@@ -44,18 +44,6 @@ int main(){
                 printf("Opção inválida!\n");
         }
     }
-
-        // for (int i = 0; i < dados_times->qntd; i++){
-        //     imprimirTime(dados_times->times[i]);
-        // };
-
-        // for (int j = 0; j < dados_partidas->qntd; j++){
-        //     imprimirPartida(dados_partidas->partidas[j]);
-        // };
-
-    // consultarTimes(dados_times);
-
-    // consultarPartidas(dados_partidas, dados_times);
 
     liberarBDTimes(dados_times);
     liberarBDPartidas(dados_partidas);

@@ -31,6 +31,10 @@ Times *criarTime(int id, const char *nome){
     return time;
 }
 
+void imprimirCabecalhoDeDadosDosTimes(){
+    printf("%-5s %-10s %-5s %-5s %-5s %-5s %-5s %-5s %-5s \n", "ID", "Time", "V", "E", "D", "GM", "GS", "SG", "PG");
+}
+
 void imprimirTime(Times *time){
     //Realiza a impressão do time
     printf("%-5d %-10s %-5d %-5d %-5d %-5d %-5d %-5d %-5d \n", time->ID, time->nome_do_time, time->vitorias, time->empates, time->derrotas, time->gols_marcados, time->gols_sofridos, time->saldo_de_gols, time->pontuacao);

@@ -42,6 +42,12 @@ void atualizarVencedor(Partidas *partida, Times *time1, Times *time2){
     }
 }
 
+void imprimirNaoFoiImplementado(){
+    system("clear");
+    printf("Esta parte ainda nao foi implementada");
+    printf("\n");
+}
+
 int verificarMandante(const char *prefix, Partidas *partida, BD_Times *dados_times){
     int id_mandante = partida->time1;
     Times *time_mandante = dados_times->times[id_mandante];

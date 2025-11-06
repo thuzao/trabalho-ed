@@ -91,26 +91,36 @@ void atualizarDadosTimes(BD_Partidas *dados_das_partidas, BD_Times *dados_dos_ti
 }
 
 void imprimirClassificacao(BD_Times *dados_times){
-    printf("%-5s %-10s %-5s %-5s %-5s %-5s %-5s %-5s %-5s \n", "ID", "Time", "V", "E", "D", "GM", "GS", "SG", "PG");
+    char encerramento;
+    system("clear");
+    imprimirCabecalhoDeDadosDosTimes();
     for (int i = 0; i < dados_times->qntd; i++){
         imprimirTime(dados_times->times[i]);
     }
+    printf("\n");
+    printf("\n");
+    printf("Digite qualquer tecla para voltar ao menu principal: ");
+    scanf("%s", &encerramento);
+    system("clear");
 }
 
 void consultarTimes(BD_Times *dados){
     char encerramento;
     char prefixo[TIMES_MAXIMO];
     int times_impressos = 0;
-    
     system("clear");
 
-    printf("Digite o nome ou prefixo do time: \n");
+    printf("Digite o nome ou prefixo do time: ");
     scanf("%s", prefixo); 
     printf("\n");
     for (int i = 0; i < dados->qntd; i++){
         if (verificarPreFixoDoTime(dados->times[i]->nome_do_time, prefixo)){
-            imprimirTime(dados->times[i]);
             times_impressos++;
+            if (times_impressos <= 1){
+                imprimirCabecalhoDeDadosDosTimes();
+            }
+            imprimirTime(dados->times[i]);
+
         };
     };
     if (times_impressos == 0){
@@ -120,4 +130,5 @@ void consultarTimes(BD_Times *dados){
     printf("\n");
     printf("Digite qualquer tecla para voltar ao menu principal: ");
     scanf("%s", &encerramento);
+    system("clear");
 }

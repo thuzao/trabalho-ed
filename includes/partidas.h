@@ -32,4 +32,7 @@ int verificarVisitante(const char *prefix, Partidas *partida, BD_Times *dados_ti
 //Função para imprimir a partida com os dados necessários
 void imprimirPartida(Partidas *partida, BD_Times *dados_dos_times);
 
+//Função para imprimir que a função não foi implementada
+void imprimirNaoFoiImplementado();
+
 #endif

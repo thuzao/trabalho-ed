@@ -56,10 +56,12 @@ void imprimirTextoParaConsultarPartidas(){
     printf("2 - Por time visitante \n");
     printf("3 - Por time mandante ou visitante \n");
     printf("4 - Retornar ao menu principal \n");
+    printf("\nDigite a opção desejada: ");
 }
 
 void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
     int escolha;
+    int partidas_impressas = 0;
     char prefixo[TIMES_MAXIMO];
     char encerramento;
 
@@ -69,13 +71,19 @@ void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
     switch (escolha) {
         case 1:
             //Verificar mandante
-            printf("Digite o nome ou prefixo do time: \n");
+            system("clear");
+            printf("Digite o nome ou prefixo do time: ");
             scanf("%s", prefixo);
+            printf("\n");
             for (int i = 0; i < dados_partidas->qntd; i++){
                 Partidas *partidas = dados_partidas->partidas[i];
                 if (verificarMandante(prefixo, partidas, dados_times)){
                     imprimirPartida(partidas, dados_times);
+                    partidas_impressas++;
                 }
+            }
+            if (partidas_impressas == 0){
+                printf("Nao foi encontrado nenhum time com este prefixo ou nome\n");
             }
             printf("\n");
             printf("\n");
@@ -85,30 +93,41 @@ void consultarPartidas(BD_Partidas *dados_partidas, BD_Times *dados_times){
 
         case 2:
             //Verificar visitante
-            printf("Digite o nome ou prefixo do time: \n");
+            system("clear");
+            printf("Digite o nome ou prefixo do time: ");
             scanf("%s", prefixo);
+            printf("\n");
             for (int i = 0; i < dados_partidas->qntd; i++){
                 Partidas *partidas = dados_partidas->partidas[i];
                 if (verificarVisitante(prefixo, partidas, dados_times)){
                     imprimirPartida(partidas, dados_times);
+                    partidas_impressas++;
                 }
+            }
+            if (partidas_impressas == 0){
+                printf("Nao foi encontrado nenhum time com este prefixo ou nome\n");
             }
             printf("\n");
             printf("\n");
             printf("Digite qualquer tecla para voltar ao menu principal: ");
             scanf("%s", &encerramento);
             break;
-            break;
 
         case 3:
             //Verificar mandante e visitante;
-            printf("Digite o nome ou prefixo do time: \n");
+            system("clear");
+            printf("Digite o nome ou prefixo do time: ");
             scanf("%s", prefixo);
+            printf("\n");
             for (int i = 0; i < dados_partidas->qntd; i++){
                 Partidas *partidas = dados_partidas->partidas[i];
                 if (verificarMandante(prefixo, partidas, dados_times) || verificarVisitante(prefixo, partidas, dados_times)){
                     imprimirPartida(partidas, dados_times);
+                    partidas_impressas++;
                 }
+            }
+            if (partidas_impressas == 0){
+                printf("Nao foi encontrado nenhum time com este prefixo ou nome\n");
             }
             printf("\n");
             printf("\n");
@@ -148,6 +167,7 @@ void liberarBDPartidas(BD_Partidas *bd) {
 
 
 void imprimirMenuPrincipal(){
+    system("clear");
     printf("Sistema de Gerenciamento de Partidas \n");
     printf("\n");
     printf("1 - Consultar time \n");
