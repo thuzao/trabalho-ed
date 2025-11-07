@@ -29,6 +29,8 @@ TRABALHO-ED/
 │       ├── times.c
 │
 ├── Makefile
+├── partidas.csv
+├── times.csv
 └── README.md
 ```
 
@@ -48,6 +50,9 @@ TRABALHO-ED/
 - **`partidas.c` e `times.c`**  
   Implementam funções auxiliares para manipular e exibir informações dos TADs, além de atualizar as estatísticas de cada time conforme os resultados.
 
+- **`times.csv` e `partidas.csv`**
+  Arquivo onde os dados dos times e das partidas são armazenados, bem como onde será buscado a informação
+
 - **`Makefile`**  
   Automatiza o processo de compilação, limpeza e execução do sistema.  
 
@@ -58,7 +63,7 @@ TRABALHO-ED/
 - Tipos Abstratos de Dados (TADs)  
 - Alocação dinâmica de memória  
 - Ponteiros e estruturas compostas  
-- Manipulação de arquivos texto (CSV)  
+- Manipulação e leitura de arquivos texto (CSV)  
 - Modularização e organização de código  
 - Controle de fluxo com menus interativos  
 
