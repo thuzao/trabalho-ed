@@ -50,8 +50,8 @@ TRABALHO-ED/
 - **`partidas.c` e `times.c`**  
   Implementam funções auxiliares para manipular e exibir informações dos TADs, além de atualizar as estatísticas de cada time conforme os resultados.
 
-- **`times.csv` e `partidas.csv`**
-  Arquivo onde os dados dos times e das partidas são armazenados, bem como onde será buscado a informação.
+- **`times.csv` e `partidas.csv`**  
+  Arquivos nos quais os dados dos times e das partidas são armazenados, com isso é onde será buscado a informação.
 
 - **`Makefile`**  
   Automatiza o processo de compilação, limpeza e execução do sistema.  
