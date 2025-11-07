@@ -48,9 +48,6 @@ TRABALHO-ED/
 - **`partidas.c` e `times.c`**  
   Implementam funções auxiliares para manipular e exibir informações dos TADs, além de atualizar as estatísticas de cada time conforme os resultados.
 
-- **`leitura.h`**  
-  Centraliza as funções de leitura e carregamento de dados de arquivos externos (como o CSV de partidas).
-
 - **`Makefile`**  
   Automatiza o processo de compilação, limpeza e execução do sistema.  
 
