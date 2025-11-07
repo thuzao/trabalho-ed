@@ -1,7 +1,4 @@
-# =========================================================
-#   Projeto: trabalho-ed
-#   Compilador e diretórios
-# =========================================================
+# Compilador e diretórios
 
 TARGET = trabalho-ed
 CC = gcc
@@ -10,15 +7,13 @@ INCLUDES_DIR = includes
 SRC_DIR = src
 MODELOS_DIR = $(SRC_DIR)/modelos
 
-# =========================================================
-#   Flags de compilação
-# =========================================================
+
+# Flags de compilação
+
 
 CFLAGS = -Wall -Wextra -I$(INCLUDES_DIR) -I$(INCLUDES_DIR)/modelos
 
-# =========================================================
-#   Fontes e objetos
-# =========================================================
+# Fontes e objetos
 
 SRC_FILES = \
     $(SRC_DIR)/main.c \
@@ -29,28 +24,22 @@ SRC_FILES = \
 
 OBJ_FILES = $(SRC_FILES:.c=.o)
 
-# =========================================================
-#   Regras principais
-# =========================================================
+# Regras principais
 
 all: $(TARGET)
 
 $(TARGET): $(OBJ_FILES)
-	@echo "🔗 Ligando objetos..."
+	@echo "Conectando objetos..."
 	$(CC) $(OBJ_FILES) -o $(TARGET)
-	@echo "✅ Compilação concluída com sucesso!"
+	@echo "Compilação concluída com sucesso!"
 
-# =========================================================
-#   Regras genéricas
-# =========================================================
+# Regras genéricas
 
 %.o: %.c
-	@echo "🧩 Compilando $< ..."
+	@echo "Compilando $< ..."
 	$(CC) $(CFLAGS) -c $< -o $@
 
-# =========================================================
-#   Limpeza
-# =========================================================
+# Limpeza
 
 clean:
 	@echo "🧹 Limpando arquivos objeto..."
@@ -62,10 +51,8 @@ fclean: clean
 
 re: fclean all
 
-# =========================================================
-#   Extras
-# =========================================================
+# Rodar o código
 
 run: all
-	@echo "🚀 Executando programa..."
+	@echo "Executando programa..."
 	./$(TARGET)
