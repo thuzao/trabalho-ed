@@ -1,7 +1,7 @@
 # Trabalho Prático — Estrutura de Dados
 ### Sistema de Gerenciamento de Times e Partidas
 
-Este projeto foi desenvolvido como parte da disciplina **Estrutura de Dados**, com o objetivo de aplicar os conceitos de **TADs (Tipos Abstratos de Dados)**, **ponteiros**, **modularização** e **manipulação de arquivos** em linguagem C.  
+Este projeto foi desenvolvido como parte da disciplina **Estrutura de Dados**, com o objetivo de aplicar os conceitos de **TADs (Tipos Abstratos de Dados)**, **ponteiros**, **modularização** e **manipulação e leitura de arquivos** em linguagem C.  
 
 O sistema simula o gerenciamento de um **campeonato de futebol**, permitindo a exibição e classificação de times e partidas, a partir da leitura de um arquivo utilizando estruturas dinâmicas e organização modular de código.
 
@@ -90,8 +90,7 @@ As principais funcionalidades implementadas são:
   - Calcula e armazena gols marcados, sofridos, saldo de gols e aproveitamento.  
 
 - **Classificação dos times**  
-  - Ordena os times com base na pontuação total e exibe a tabela de classificação.  
-  - Implementação de algoritmo de ordenação próprio, sem uso de bibliotecas externas.  
+  - Ordena os times com base na pontuação total e exibe a tabela de classificação.   
 
 - **Interface de menu interativo**  
   - Apresenta um menu com opções numeradas (1, 2, 3...) e saída através da tecla “q”.  
