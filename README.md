@@ -1,7 +1,7 @@
 # Trabalho Prático — Estrutura de Dados
 ### Sistema de Gerenciamento de Times e Partidas
 
-Este projeto foi desenvolvido pelos estudantes **Arthur Oliveira Marques da Silva** e **Gabriel Alves da Conceição Abreu**, como parte da disciplina **Estrutura de Dados**. Desssa forma, foi desenvolvido com o objetivo de aplicar os conceitos de **TADs (Tipos Abstratos de Dados)**, **ponteiros**, **modularização** e **manipulação e leitura de arquivos** em linguagem C.  
+Este projeto foi desenvolvido pelos estudantes **Arthur Oliveira Marques da Silva** *(20242BSI0087)* e **Gabriel Alves da Conceição Abreu** *(20242BSI0168)*, como parte da disciplina **Estrutura de Dados**. Dessa forma, foi desenvolvido com o objetivo de aplicar os conceitos de **TADs (Tipos Abstratos de Dados)**, **ponteiros**, **modularização** e **manipulação e leitura de arquivos** em linguagem C.  
 
 O sistema simula o gerenciamento de um **campeonato de futebol**, permitindo a exibição e classificação de times e partidas, a partir da leitura de um arquivo utilizando estruturas dinâmicas e organização modular de código.
 
