@@ -1,138 +1,116 @@
-# Trabalho Prático — Estrutura de Dados
-### Sistema de Gerenciamento de Times e Partidas
+# Sistema de Gerenciamento de Times e Partidas
 
-Este projeto foi desenvolvido pelos estudantes **Arthur Oliveira Marques da Silva** *(20242BSI0087)* e **Gabriel Alves da Conceição Abreu** *(20242BSI0168)*, como parte da disciplina **Estrutura de Dados**. Dessa forma, foi desenvolvido com o objetivo de aplicar os conceitos de **TADs (Tipos Abstratos de Dados)**, **ponteiros**, **modularização** e **manipulação e leitura de arquivos** em linguagem C.  
+## 📚 Descrição do Projeto
 
-O sistema simula o gerenciamento de um **campeonato de futebol**, permitindo a exibição e classificação de times e partidas, a partir da leitura de um arquivo utilizando estruturas dinâmicas e organização modular de código.
+Este projeto foi desenvolvido pelos estudantes **Arthur Oliveira Marques da Silva (20242BSI0087)** e **Gabriel Alves da Conceição Abreu (20242BSI0168)** como parte da disciplina **Estrutura de Dados** do IFES (Campus Serra).
+
+O sistema permite gerenciar **times e partidas de um campeonato**, utilizando **Listas Encadeadas (Linked Lists)** para manipulação dinâmica de dados e persistência em arquivos CSV. Ele suporta operações de **CRUD** (Inserção, Consulta, Atualização e Remoção) com recálculo automático das estatísticas dos times.
 
 ---
 
-## 📁 Estrutura do Projeto
+## 🗂 Estrutura do Projeto
 
-O projeto está organizado da seguinte forma:
-
-```
+```text
 TRABALHO-ED/
 │
 ├── includes/
-│   ├── bd_partidas.h
-│   ├── bd_times.h
-│   ├── partidas.h
-│   ├── times.h
+│   ├── bd_partidas.h      # Cabeçalho da lista encadeada de partidas
+│   ├── bd_times.h         # Cabeçalho da lista encadeada de times
+│   ├── partidas.h         # Estrutura e funções auxiliares de Partida
+│   ├── times.h            # Estrutura e funções auxiliares de Time
 │
 ├── src/
-│   ├── main.c
+│   ├── main.c             # Menu principal e controle de fluxo
 │   └── modelos/
-│       ├── bd_partidas.c
-│       ├── bd_times.c
-│       ├── partidas.c
-│       ├── times.c
+│       ├── bd_partidas.c  # Implementação da lista e manutenção de partidas
+│       ├── bd_times.c     # Implementação da lista e estatísticas de times
+│       ├── partidas.c     # Funções auxiliares de partidas
+│       ├── times.c        # Funções auxiliares de times
 │
-├── Makefile
-├── partidas.csv
-├── times.csv
-└── README.md
+├── Makefile               # Automação de compilação
+├── partidas_completo.csv  # Base de dados de partidas
+├── times.csv              # Base de dados de times
+└── README.md              # Documentação do projeto
 ```
 
 ---
 
-## ⚙️ Estrutura dos Componentes
+## 🧠 Estruturas de Dados Principais
 
-- **`main.c`**  
-  Contém o fluxo principal do programa, o menu interativo e a integração entre os módulos do sistema.
+### 1. TAD Time (`times.h`)
 
-- **`bd_times.h/c`**  
-  Define o TAD responsável por armazenar e manipular os dados dos times, incluindo identificação, nome, vitórias, empates, derrotas, gols e pontuação.
+* Representa um clube.
+* **Dados:** ID, nome, vitórias, derrotas, empates, gols a favor, gols contra e saldo de gols.
+* **Responsabilidade:** Armazenar o estado atual de cada time.
 
-- **`bd_partidas.h/c`**  
-  Define o TAD responsável pelo gerenciamento das partidas, com dados como identificadores dos times, gols e resultados.
+### 2. TAD Partida (`partidas.h`)
 
-- **`partidas.c` e `times.c`**  
-  Implementam funções auxiliares para manipular e exibir informações dos TADs, além de atualizar as estatísticas de cada time conforme os resultados.
+* Representa um jogo entre dois times.
+* **Dados:** ID da partida, IDs dos times (mandante e visitante) e placares.
+* **Responsabilidade:** Determinar o resultado e atualizar estatísticas dos times.
 
-- **`times.csv` e `partidas.csv`**  
-  Arquivos nos quais os dados dos times e das partidas são armazenados, com isso é onde será buscado a informação.
+### 3. TAD BDTimes (`bd_times.h`)
 
-- **`Makefile`**  
-  Automatiza o processo de compilação, limpeza e execução do sistema.  
+* Lista encadeada para gerenciar todos os times.
+* **Principais funções:**
 
----
+  * `carregarTimes`: Lê times do CSV.
+  * `ordenarTimes`: Ordena a tabela por pontos, vitórias e saldo de gols.
+  * `buscarTimePorID`: Localiza um time específico.
 
-## 🧠 Conceitos Utilizados
+### 4. TAD BDPartidas (`bd_partidas.h`)
 
-- Tipos Abstratos de Dados (TADs)  
-- Alocação dinâmica de memória  
-- Ponteiros e estruturas compostas  
-- Manipulação e leitura de arquivos texto (CSV)  
-- Modularização e organização de código  
-- Controle de fluxo com menus interativos  
+* Lista encadeada para gerenciar todas as partidas.
+* **Principais funções:**
 
----
-
-## 🧩 Funcionalidades do Sistema
-
-O sistema foi projetado para gerenciar times e partidas de um campeonato de forma simples e modular.  
-As principais funcionalidades implementadas são:
-
-- **Carregamento de dados**  
-  - Leitura automática dos arquivos de times e partidas ao iniciar o sistema.  
-  - Verificação de erros ao abrir e ler os arquivos.  
-
-- **Exibição de times cadastrados**  
-  - Lista todos os times registrados com seus respectivos IDs, nomes e estatísticas.  
-  - Exibição organizada em formato de tabela no terminal.  
-
-- **Exibição de partidas realizadas**  
-  - Mostra todas as partidas carregadas, indicando os times participantes, placares e resultados.  
-
-- **Cálculo de pontuação e estatísticas**  
-  - Atualiza a pontuação de cada time de acordo com as regras (3 pontos por vitória, 1 por empate).  
-  - Calcula e armazena gols marcados, sofridos, saldo de gols e aproveitamento.  
-
-- **Classificação dos times**  
-  - Ordena os times com base na pontuação total e exibe a tabela de classificação.   
-
-- **Interface de menu interativo**  
-  - Apresenta um menu com opções numeradas (1, 2, 3...) e saída através da tecla “q”.  
-  - Uso de limpeza de tela para manter o terminal organizado durante a execução.  
-
-- **Estrutura modular e reutilizável**  
-  - Cada funcionalidade é separada em seu próprio módulo, facilitando manutenção e extensão do sistema.  
+  * `inserirPartida`, `atualizarPartida`, `removerPartida`: CRUD de partidas.
+  * `salvarPartidasCSV`: Persiste alterações no arquivo CSV.
 
 ---
 
-## 💻 Compilação e Execução
+## 🧱 Estratégias de Implementação
 
-O projeto utiliza um **Makefile** para simplificar a compilação e execução.  
-
-### Comandos principais:
-
-| Ação | Comando |
-|------|----------|
-| Compilar o projeto | `make` |
-| Executar o programa | `make run` |
-| Limpar apenas arquivos objeto | `make clean` |
-| Limpar arquivos objeto e o executável | `make fclean` |
-| Remover binário e recompila | `make re` |
-
-O executável final gerado tem o nome **`trabalho-ed`**.
+* **Recálculo Total:** Ao inserir, remover ou atualizar partidas, todas as estatísticas dos times são zeradas e recalculadas a partir da lista completa de partidas, garantindo consistência.
+* **Ordenação da Tabela:** Utiliza **Bubble Sort** sobre a lista encadeada de times. Critério: Pontos Ganhos > Vitórias > Saldo de Gols.
+* **IDs Automáticos:** A cada nova partida, o sistema gera o próximo ID disponível.
+* **Interface Interativa:** Limpeza de tela e pausas estratégicas para melhor navegação.
 
 ---
 
-## 🧱 Decisões de Implementação
+## 🧩 Funcionalidades
 
-- Organização modular tentou-se seguir boas práticas de desenvolvimento em C.  
-- Carregamento de dados apenas no início e liberação da memória ao encerrar.  
-- Interface limpa com uso de `system("clear")` para melhor legibilidade.  
-- Comentários explicativos e consistentes em todos os módulos.
-- Separação do código baseado nos TADs
+* Consultar **times** por nome ou prefixo e exibir estatísticas detalhadas.
+* Consultar **partidas** filtrando por mandante, visitante ou ambos.
+* **Inserir** nova partida com validação de times.
+* **Atualizar** placares de partidas existentes.
+* **Remover** partidas e atualizar estatísticas automaticamente.
+* Exibir **classificação completa** do campeonato.
+* Salvar alterações em **CSV** ao encerrar o programa.
+
+---
+
+## 💻 Como Compilar e Executar
+
+### Pré-requisitos
+
+* Compilador `gcc`
+* Utilitário `make`
+* Sistema Linux/Unix recomendado
+
+### Comandos
+
+| Objetivo                      | Comando       |
+| ----------------------------- | ------------- |
+| Compilar o projeto            | `make`        |
+| Executar o sistema            | `make run`    |
+| Limpar arquivos objeto (.o)   | `make clean`  |
+| Limpar tudo (executável + .o) | `make fclean` |
+| Recompilar do zero            | `make re`     |
+
+O executável gerado será chamado `trabalho-ed`.
 
 ---
 
-## 🪟 Ambiente de Desenvolvimento
+## 🎯 Considerações Finais
 
-- **Sistema Operacional:** Ubuntu Mint  
-- **Compilador:** GCC  
-- **Execução via Terminal:** compatível com sistemas baseados em Linux  
-
----
+Este projeto demonstra a aplicação prática de **estruturas de dados dinâmicas** em C, combinando **listas encadeadas** com persistência em arquivos CSV e uma interface de usuário simples, porém funcional. O foco principal foi garantir **robustez, consistência e modularidade** do código.

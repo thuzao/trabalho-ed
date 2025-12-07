@@ -1,39 +1,39 @@
-#ifndef PARTIDAS_H
-#define PARTIDAS_H
+    #ifndef PARTIDAS_H
+    #define PARTIDAS_H
 
-#include "times.h"
-#include "bd_times.h"
+    #include "times.h"
+    #include "bd_times.h"
 
-//Definição da estrutura de partidas
-typedef struct 
-{
-    int id;
-    int time1;
-    int time2;
-    int gols_time1;
-    int gols_time2;
-} Partidas;
+    //Definição da estrutura de partidas
+    typedef struct 
+    {
+        int id;
+        int time1;
+        int time2;
+        int gols_time1;
+        int gols_time2;
+    } Partidas;
 
 
-//Função para criar a partida com suas informações
-Partidas *criarPartida(int ID, int t1, int t2, int gst1, int gst2);
+    //Função para criar a partida com suas informações
+    Partidas *criarPartida(int ID, int t1, int t2, int gst1, int gst2);
 
-//Função para verificar qual time venceu, empatou ou perdeu
-int verificarSeFoiEmpate(Partidas *partida);
+    //Função para verificar qual time venceu, empatou ou perdeu
+    int verificarSeFoiEmpate(Partidas *partida);
 
-//Função para atualizar informações do vencedor e do perdedor
-void atualizarVencedor(Partidas *partida, Times *time1, Times *time2);
+    //Função para atualizar informações do vencedor e do perdedor
+    void atualizarVencedor(Partidas *partida, Times *time1, Times *time2);
 
-//Função para verificar o time partidas do time como mandante
-int verificarMandante(const char *prefix, Partidas *partida, BD_Times *dados_times);
+    //Função para verificar o time partidas do time como mandante
+    int verificarMandante(const char *prefix, Partidas *partida, BD_Times *dados_times);
 
-//Função para verificar o time partidas do time como visitante
-int verificarVisitante(const char *prefix, Partidas *partida, BD_Times *dados_times);
+    //Função para verificar o time partidas do time como visitante
+    int verificarVisitante(const char *prefix, Partidas *partida, BD_Times *dados_times);
 
-//Função para imprimir a partida com os dados necessários
-void imprimirPartida(Partidas *partida, BD_Times *dados_dos_times);
+    //Função para imprimir a partida com os dados necessários
+    void imprimirPartida(Partidas *partida, BD_Times *dados_dos_times);
 
-//Função para imprimir que a função não foi implementada
-void imprimirNaoFoiImplementado();
+    //Função para imprimir que a função não foi implementada
+    void imprimirNaoFoiImplementado();
 
-#endif
+    #endif
